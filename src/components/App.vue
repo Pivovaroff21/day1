@@ -12,9 +12,9 @@
 </template>
 <script>
 import axios from 'axios'
-import StudentInput from './StudentInput.vue';
-import StudentShow from './StudentShow.vue';
+import { StudentInput, StudentShow } from './';
 export default {
+  name: "App",
   components: {
     StudentInput,
     StudentShow
