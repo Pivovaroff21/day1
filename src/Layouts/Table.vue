@@ -11,7 +11,9 @@
 	</div>
 </template>
 <script>
-import axios from 'axios'
+
+import { Api } from '../Api'
+
 import { StudentInput, StudentShow } from '../Components';
 export default {
   name: "App",
@@ -27,40 +29,32 @@ export default {
       isEdit:false,
     };
   },
+
   mounted() {
-    axios.get("http://34.82.81.113:3000/students").then((res)=>{
-      this.students = res.data;
-    })
+    Api.getStudents()
+        .then((res)=>{this.students = res.data;})
+        .catch(e=>console.error(e))
   },
   methods: {
 
-    addStudent() {
-      axios.post("http://34.82.81.113:3000/students",{ ...this.student }).then(
-        (response)=>{
-          this.students.push(response.data);
-        }
-      );
+      addStudent() {
+        Api.addStudent({ ...this.student })
+            .then(res=>{this.students.push(res.data)})
+            .catch(e=>console.error(e))
+      },
 
-    },
-    deleteStudent(studId) {
-      axios.delete(`http://34.82.81.113:3000/students/${studId}`).then(()=>{
-        this.students = this.students.filter((item)=>item._id !== studId);
-      });
-    },
-    updateStudent(newStudent) {
-      axios.put(`http://34.82.81.113:3000/students/${newStudent._id}`,
-      {
-        name:newStudent.name,
-        isDonePr:newStudent.isDonePr,
-        group:newStudent.group
-      }).then(
-        (response)=>{
-          console.log(response);
-        }
-      );
+      deleteStudent(id) {
+        Api.deleteStudent(id)
+            .then(res=>{this.students = this.students.filter(i => i._id !== id);})
+            .catch(e=>console.error(e))
+      },
 
-    },
-  },
+      updateStudent(student) {
+        Api.updateStudent(student)
+            .then(res=>{console.log(res)})
+            .catch(e=>console.error(e))
+      }
+    }
   }
  </script>
 
