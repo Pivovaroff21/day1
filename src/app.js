@@ -1,4 +1,4 @@
 import { createApp } from "vue";
-import { App } from "./components";
+import { Table } from "./Layouts";
 
-createApp(App).mount("#app");
+createApp(Table).mount("#app");

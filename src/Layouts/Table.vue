@@ -12,7 +12,7 @@
 </template>
 <script>
 import axios from 'axios'
-import { StudentInput, StudentShow } from './';
+import { StudentInput, StudentShow } from '../Components';
 export default {
   name: "App",
   components: {

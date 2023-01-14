@@ -13,7 +13,7 @@
 
 <script >
 import { defineComponent } from 'vue';
-import StudentInput from './StudentInput.vue';
+import { StudentInput } from './';
 export default defineComponent({
   name: "StudentShow",
    components: {
