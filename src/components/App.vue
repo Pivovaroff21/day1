@@ -15,6 +15,7 @@ import axios from 'axios'
 import StudentInput from './StudentInput.vue';
 import StudentShow from './StudentShow.vue';
 export default {
+  name:"App",
   components: {
     StudentInput,
     StudentShow
