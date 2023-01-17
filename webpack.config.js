@@ -21,15 +21,32 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: "vue-loader",
       },
-    ]
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: {
+                localIdentName: "[local]",
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false,
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
   ],
 };
