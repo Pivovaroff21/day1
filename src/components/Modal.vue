@@ -1,6 +1,7 @@
 <template>
+  <transition name="fade">
     <div class="vue-modal" v-show="open">
-      <transition name="slide">
+      <transition name="drop-in">
         <div class="vue-modal-inner">
           <div class="vue-modal-content">
             <slot />
@@ -9,6 +10,7 @@
         </div>
       </transition>
     </div>
+  </transition>
 </template>
 
 <script>
@@ -64,5 +66,16 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.drop-in-enter-active,
+.drop-in-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.drop-in-enter-from,
+.drop-in-leave-to {
+  opacity: 0;
+  transform: translate(0, -50px);
 }
 </style>
