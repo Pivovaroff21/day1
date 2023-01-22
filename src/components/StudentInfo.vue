@@ -5,6 +5,7 @@
       <p>{{ student.name }}</p>
       <p>{{ student.group }}</p>
       <p>{{ isDonePrText }}</p>
+      <p>{{ studentsCount }}</p>
   </div>
 
 
@@ -42,6 +43,9 @@ export default {
   computed: {
     isDonePrText(){
       return this.student.isDonePr ? "Здана" : "Не здана";
+    },
+    studentsCount () {
+      return this.$store.getters.getCount
     }
   },
   mounted(){
