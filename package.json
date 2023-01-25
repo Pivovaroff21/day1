@@ -1,7 +1,6 @@
 {
   "name": "day1",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -26,5 +25,14 @@
     "vuex": "^4.1.0",
     "vuex-persistedstate": "^4.1.0",
     "webpack": "^5.75.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pivovaroff21/day1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pivovaroff21/day1/issues"
+  },
+  "homepage": "https://github.com/Pivovaroff21/day1#readme",
+  "description": ""
 }

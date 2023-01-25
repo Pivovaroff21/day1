@@ -5,7 +5,11 @@
     </router-link>
     <td><input type="checkbox" v-model="item.isDonePr"></td>
     <td>{{item.group}}</td>
-    <td><a href = "#" @click="deleteStudent(item._id)">Видалити</a></td>
+    <td>
+        <a href="#" @click="deleteStudent(item._id)" v-show="item.group === getCurrentUser.group">Видалити</a>
+    </td>
+
+
   </template>
   <StudentInput :student="newStudent" v-else></StudentInput>
   <td v-if="!isEdit"><a href = "#" @click="isEdit = !isEdit,newStudent = item">Редагувати</a></td>
@@ -33,6 +37,12 @@ export default defineComponent({
       newStudent:{},
     };
   },
+  computed: {
+     getCurrentUser() {
+           return this.$store.getters.getUser
+     }
+  },
+
    methods:{
     deleteStudent(studId) {
       this.$parent.deleteStudent(studId);
